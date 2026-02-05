@@ -1,6 +1,4 @@
 "use client";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "../../lib/api";
 import NoteList from "../../components/NoteList/NoteList";
 import Pagination from "../../components/Pagination/Pagination";
 import css from "./page.module.css";
@@ -10,17 +8,14 @@ import NoteForm from "../../components/NoteForm/NoteForm";
 import { Toaster } from "react-hot-toast";
 import { useDebouncedCallback } from "use-debounce";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import { useNotes } from "@/hooks/useNotes";
 
 function NotesClient() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isSuccess } = useQuery({
-    queryKey: ["notes", query, page],
-    queryFn: () => fetchNotes(query, page),
-    placeholderData: keepPreviousData,
-  });
+  const { data, isSuccess } = useNotes(query, page);
 
   const updateQuery = useDebouncedCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
