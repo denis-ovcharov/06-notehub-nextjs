@@ -6,5 +6,6 @@ export function useNotes(query: string, page: number) {
     queryKey: ["notes", query, page],
     queryFn: () => fetchNotes(query, page),
     placeholderData: keepPreviousData,
+    refetchOnMount: false,
   });
 }
