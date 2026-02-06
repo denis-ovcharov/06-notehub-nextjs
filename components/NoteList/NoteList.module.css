@@ -92,3 +92,18 @@
 .link:hover {
   background-color: #0b5ed7;
 }
+.edit {
+  align-self: flex-end;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #358649;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit:hover {
+  background-color: #2d6a4f;
+}
